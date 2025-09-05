@@ -1,14 +1,14 @@
 # Phylo Hap Analysis 
 
-A pipeline for phylogenetic analysis of haplotypes from the MalariaGEN data, focusing on mosquito genomic regions of interest. This pipeline downloads haplotype data from the cloud, generates multiple sequence alignments in FASTA format, constructs phylogenetic trees using IQ-TREE, and provides interactive visualizations using both R (ape) and Python (baltic_bokeh) frameworks.
+Code for phylogenetic analysis of haplotypes from malariagen_data. It downloads haplotype data from the cloud, generates multiple sequence alignments in FASTA format, constructs phylogenetic trees using IQ-TREE, and provides interactive visualizations using either ape (R) or baltic_bokeh (Python).
 
 ## Overview
 
-This pipeline performs the following steps:
+The notebooks/scripts perform the following steps:
 1. **Data extraction**: Downloads haplotypes and metadata from MalariaGEN using the `malariagen_data` Python package
 2. **FASTA generation**: Converts haplotype data to multiple sequence alignment format
 3. **Phylogenetic reconstruction**: Uses IQ-TREE to infer maximum likelihood phylogenetic trees
-4. **Visualization**: Creates tree plots using R (ape package) or Python (baltic_bokeh)
+4. **Visualization**: Creates plots using R (ape package) or Python (baltic_bokeh)
 
 ## Prerequisites
 
@@ -21,7 +21,7 @@ This pipeline performs the following steps:
 
 1. Clone this repository:
 ```bash
-git clone <repository-url>
+git clone https://github.com/LSTM-VIGG/phylo-hap-analysis
 cd phylo-hap-analysis
 ```
 
@@ -127,23 +127,16 @@ Interactive web-based phylogenetic visualization:
 python scripts/bokeh-phy.py --tree results/tree.newick --metadata results/metadata.tsv --output plot.html
 ```
 
-## Workflow Example
+## Example
 
-1. **Configure analysis parameters** in `notebooks/write_phylo_hap_fastas.ipynb`
-2. **Run the notebook** to generate FASTA files:
-   ```bash
-   jupyter notebook notebooks/write_phylo_hap_fastas.ipynb
-   ```
-3. **Fix the IQ-TREE script** (correct the glob pattern):
-   ```bash
-   sed -i 's/\$FASTA_DIR"\/.fasta/\$FASTA_DIR"\/*.fasta/' scripts/run_iqtree.sh
-   ```
-4. **Run phylogenetic inference**:
+1. **Configure parameters** in `notebooks/write_phylo_hap_fastas.ipynb`
+2. **Run the notebook** to generate FASTA files
+3. **Run phylogenetic inference**:
    ```bash
    chmod +x scripts/run_iqtree.sh
    ./scripts/run_iqtree.sh
    ```
-5. **Visualize results**:
+4. **Visualize results**:
    - R: `Rscript scripts/ape-plotting.R`
    - Python: `python scripts/bokeh-phy.py [arguments]`
 
