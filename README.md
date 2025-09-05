@@ -27,7 +27,7 @@ cd phylo-hap-analysis
 
 2. Install Python dependencies:
 ```bash
-pip install malariagen_data pandas numpy allel jupyter
+pip install malariagen_data jupyter
 ```
 
 3. Install baltic_bokeh from GitHub:
